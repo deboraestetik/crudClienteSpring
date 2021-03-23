@@ -9,7 +9,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
-@CrossOrigin(origins = "http://localhost:4200")
+@CrossOrigin(origins = {"http://localhost:4200"})
 
 @RestController
 @RequestMapping(value = "/clientes")
@@ -43,15 +43,9 @@ public class ClienteController {
     }
 
     @CrossOrigin
-    @PutMapping("")
-    public Cliente updateCliente(@RequestBody Cliente cliente) throws NotFoundException {
+    @PutMapping("/{id}")
+    public Cliente updateCliente(@PathVariable(value = "id") long id, @RequestBody Cliente cliente) throws NotFoundException {
         return clienteService.saveUpdateProduto(cliente);
     }
-
-//    @CrossOrigin
-//    @PutMapping("/{id}")
-//    public Cliente updateClienteById(@PathVariable(value = "id") long id) throws NotFoundException {
-//        return clienteService.saveUpdateProdutoById(id);
-//    }
 
 }
